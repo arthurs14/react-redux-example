@@ -22,7 +22,7 @@ const Create = () => {
     ev.preventDefault();
 
     const newUser = {
-      id: users[users.length - 1].id + 1,
+      id: users.length !== 0 ? users[users.length - 1].id + 1 : 1,
       name: userInfo.name,
       email: userInfo.email,
     };

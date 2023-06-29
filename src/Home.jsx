@@ -1,8 +1,15 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { deleteUser } from './userSlice';
 
 const Home = () => {
   const users = useSelector((state) => state.users);
+  const dispatch = useDispatch();
+
+  const handleDelete = (id) => {
+    console.log('delete');
+    dispatch(deleteUser(id));
+  };
 
   return (
     <div className="container">
@@ -32,7 +39,12 @@ const Home = () => {
                 >
                   Edit
                 </Link>
-                <button className="btn btn-sm btn-danger ms-2">Delete</button>
+                <button
+                  className="btn btn-sm btn-danger ms-2"
+                  onClick={() => handleDelete(user.id)}
+                >
+                  Delete
+                </button>
               </td>
             </tr>
           ))}
